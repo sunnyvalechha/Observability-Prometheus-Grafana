@@ -20,4 +20,15 @@ Metrics:
 <img width="1307" height="753" alt="image" src="https://github.com/user-attachments/assets/8513e216-5526-4736-8647-61965b1e4960" />
 
 
+Installation:
+
+* Setup a EKS cluster (any k8 will work)
+* Install helm
+
+    $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    $ chmod 700 get_helm.sh
+    $ ./get_helm.sh
+
+
+
 
