@@ -64,11 +64,11 @@ Installation:
 
 <img width="1649" height="380" alt="image" src="https://github.com/user-attachments/assets/4555f9da-43ae-4357-abf5-8bdc6a73c54c" />
 
-kubectl --namespace monitoring get pods -l "release=monitoring"
-kubectl --namespace monitoring get secrets monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo                # Get grafana user id & password (prom-operator)
-
-
-kubectl port-forward service/prometheus-operated -n monitoring 9090:9090
-kubectl port-forward service/monitoring-grafana -n monitoring 8080:80
-kubectl port-forward service/alertmanager-operated -n monitoring 9093:9093
+                kubectl --namespace monitoring get pods -l "release=monitoring"
+                kubectl --namespace monitoring get secrets monitoring-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo                # Get grafana user id & password (prom-operator)
+                
+                
+                kubectl port-forward service/prometheus-operated -n monitoring 9090:9090
+                kubectl port-forward service/monitoring-grafana -n monitoring 8080:80
+                kubectl port-forward service/alertmanager-operated -n monitoring 9093:9093
 
