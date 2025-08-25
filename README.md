@@ -1,10 +1,9 @@
 Git repo URL: https://github.com/iam-veeramalla/observability-zero-to-hero/
 
 What is Observability?
+- While monitoring focuses on predefined metrics, observability allows you to ask any question about your system's behavior and get answers based on the data it generates.
 
-- While monitoring focuses on predefined metrics, observability allows you to ask any question about your system's behavior and get answers based on the data it generates. While monitoring focuses on predefined metrics, observability allows you to ask any question about your system's behavior and get answers based on the data it generates.
-
-Example: 
+Example:
 * What is the disk utilization of a EKS node from last 24 hours?
 * What is the CPU utilization of a particular node of a Kubernetes cluster?
 * Out of 1000 http request, how many failed along with the reason of failure and how many succeed?
@@ -19,6 +18,14 @@ Example:
 Metrics:
 <img width="1307" height="753" alt="image" src="https://github.com/user-attachments/assets/8513e216-5526-4736-8647-61965b1e4960" />
 
+# Metrics & Monitoring
+
+* Architecture of Prometheus
+* Component of Prometheus
+
+<img width="831" height="1080" alt="image" src="https://github.com/user-attachments/assets/6fa1f9dc-56a2-44e8-8c7d-db4d4b7e9f32" />
+
+
 - Prometheus scrapes (pull) information (cpu, memory) in multiple ways few of them are listed below:
 1. Node exporter
 2. Kube state metrics
@@ -28,12 +35,8 @@ Metrics:
 * Prometheus scrape these metrics and store in "time series database" (TSDB)
 * As a user we run prometheus query language "PromQL" query and import the information from proemetheus TSDB.
 * A user is talking to a component of prom. server which is a http server.
-* 
-* 
-
 
 Installation:
-
 * Setup a EKS cluster (any k8 will work)
 * Install helm
 
