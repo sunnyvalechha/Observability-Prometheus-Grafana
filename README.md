@@ -19,6 +19,18 @@ Example:
 Metrics:
 <img width="1307" height="753" alt="image" src="https://github.com/user-attachments/assets/8513e216-5526-4736-8647-61965b1e4960" />
 
+- Prometheus scrapes (pull) information (cpu, memory) in multiple ways few of them are listed below:
+1. Node exporter
+2. Kube state metrics
+3. Custom metrics - these are related to our application such as total time which http has took to process the request or In 24hours how many users have created account in application.
+4. mysql exporter - it will continuesly talk to the mysql and get the information through IP address.
+
+* Prometheus scrape these metrics and store in "time series database" (TSDB)
+* As a user we run prometheus query language "PromQL" query and import the information from proemetheus TSDB.
+* A user is talking to a component of prom. server which is a http server.
+* 
+* 
+
 
 Installation:
 
