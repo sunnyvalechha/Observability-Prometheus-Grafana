@@ -1,3 +1,59 @@
+Monitoring with Prometheus & Grafana
+
+Aws: 
+* Ubuntu t2.medium
+
+Download: https://prometheus.io/download/
+* wget https://github.com/prometheus/prometheus/releases/download/v3.8.1/prometheus-3.8.1.linux-amd64.tar.gz
+* mv prometheus-3.8.1.linux-amd64 prometheus	# rename
+
+# Run prometheus as background process
+* nohup ./prometheus > prometheus.log 2>&1 &	# run prometheus
+* ps -ef | grep prometheus
+* http://35.154.92.2:9090/
+
+# Prometheus exporters
+* A Prometheus exporter is a dedicated agent or service that collects metrics from external systems (like databases, servers, or applications).
+
+# Prometheus node exporters # download from same page
+
+* wget https://github.com/prometheus/node_exporter/releases/download/v1.10.2/node_exporter-1.10.2.linux-amd64.tar.gz
+* tar -xvf /root/download/node_exporter-1.10.2.linux-amd64.tar.gz
+* mv node_exporter-1.10.2.linux-amd64 node_exporter
+* cd /root/node-exporter/node_exporter
+* nohup ./node_exporter > node_porter.log 2>&1 &
+* Add below lines in "vi /root/prometheus-server/prometheus/prometheus.yml"
+
+- job_name: "node_exporter"
+    static_configs:
+      - targets: ["localhost:9100"]
+	  
+* kill the prometheus process and run prometheus again, refresh the UI & search for "node".
+* test any query related to "node_" like (cpu, memory)
+
+
+# Add targets (hosts) in prometheus to monitor
+* Add any small instance
+* setup node exporter as did earlier.
+* vi /root/prometheus-server/prometheus/prometheus.yml	# add new node ip with port number
+* kill the prometheus process and run again, go to targets to validate.
+
+  - job_name: "node_exporter"
+    static_configs:
+      - targets: ["localhost:9100","13.201.20.17:9100"]
+	  
+* Run query you can there are 2 targets --> node_cpu_seconds_total
+
+
+
+
+
+
+
+
+
+==================================================
+
 Git repo URL: https://github.com/iam-veeramalla/observability-zero-to-hero/
 
 What is Observability?
