@@ -29,9 +29,12 @@ Example:
 * Prometheus scrapes these metrics and store in "time series database" (TSDB)
 * As a user, we run a Prometheus query language "PromQL" query and import the information from Prometheus TSDB.
 * A user is talking to a component of Prom. A server that is a http server.
+* Prometheus collect any node information from Node exporters.
+* Prometheus also scrape metric from "kube state metric" this ksm is already running on the k8s cluster and communicate with API server.
+* Prometheus also scrape metric through custom metrics which is written through developers.
 
 Installation:
-* Setup a EKS cluster (any k8 will work)
+* Setup a EKS cluster (any k8 distro will work)
 * Associate OIDC provider same did in EKS setup
 * Install helm
 
@@ -47,22 +50,18 @@ Installation:
 
 * Deploy chart into namespace
 
-        helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring -f ./custom_kube_prometheus_stack.yml
-        kubectl --namespace monitoring get pods -l "release=monitoring"
+        helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+        helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring
+        kubectl --namespace monitoring get pods -l "release=monitoring"  
+        helm repo update
+        kubectl get svc | grep prometheus
+        kubectl get svc prometheus-kube-prometheus-prometheus --output yaml > prometheus.yml
+        kubectl get svc prometheus-kube-prometheus-alertmanager --output yaml > alertmanager.yml
 
-  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
-helm install prometheus prometheus-community/kube-prometheus-stack
-kubectl get svc | grep prometheus
-kubectl get svc prometheus-kube-prometheus-prometheus --output yaml > prometheus.yml
-kubectl get svc prometheus-kube-prometheus-alertmanager --output yaml > alertmanager.yml
-
-Note: Edit both yaml files and change type from ClusterIP to LoadBalancer
+Note: Edit all 3 yaml files and change type from ClusterIP to LoadBalancer
 
 kubectl get svc | grep prometheus
 
 Note: Access with EXTERNAL-IP URL of both LoadBalancer add respective ports 9090 & 9093 
 
-* Prometheus collect any node information from Node exporters.
-* Prometheus also scrape metric from "kube state metric" this ksm is already running on the k8s cluster and communicate with API server.
-* Prometheus also scrape metric through custom metrics which is written through developers.
+
