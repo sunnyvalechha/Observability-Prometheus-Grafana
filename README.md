@@ -15,15 +15,10 @@ Example:
 2. Logging - Give insights into why the system is in this particular state.
 3. Tracing - Give insights on how to fix this particular state.
 
-Metrics Example:
-<img width="1307" height="753" alt="image" src="https://github.com/user-attachments/assets/8513e216-5526-4736-8647-61965b1e4960" />
-
 # Metrics & Monitoring
 
 * Architecture of Prometheus
 * Component of Prometheus
-
-<img width="831" height="1080" alt="image" src="https://github.com/user-attachments/assets/6fa1f9dc-56a2-44e8-8c7d-db4d4b7e9f32" />
 
 - Prometheus scrapes (pulls) information (cpu, memory) in multiple ways few of which are listed below:
 1. Node exporter
