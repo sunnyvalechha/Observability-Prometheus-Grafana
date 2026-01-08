@@ -65,3 +65,14 @@ kubectl get svc | grep prometheus
 Note: Access with EXTERNAL-IP URL of both LoadBalancer add respective ports 9090 & 9093 
 
 
+# Instrumentaion
+
+* Instrumentation in Prometheus is the process of adding code to your applications using client libraries to create, update, and expose custom metrics via an HTTP /metrics endpoint, allowing the Prometheus server to scrape and collect time-series data for monitoring, alerting, and visualization.
+
+Metric Types:
+
+* Counter: A cumulative counter that only goes up (e.g., total requests).
+* Gauge: A value that can go up or down (e.g., current CPU usage).
+* Histogram: Samples observations (like request durations) and counts them in configurable buckets, useful for calculating quantiles.
+* Summary: Similar to histograms but calculates quantiles on the client side.
+
