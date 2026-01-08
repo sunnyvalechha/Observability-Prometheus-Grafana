@@ -48,7 +48,4 @@ Installation:
 * Deploy chart into namespace
 
         helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring -f ./custom_kube_prometheus_stack.yml
-
-<img width="1649" height="380" alt="image" src="https://github.com/user-attachments/assets/4555f9da-43ae-4357-abf5-8bdc6a73c54c" />
-
         kubectl --namespace monitoring get pods -l "release=monitoring"
